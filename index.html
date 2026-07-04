@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Salya Construction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <div class="logo"><span>Salya</span> Construction</div>
+    <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="nav">
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="site-preview">
+  <section class="hero container" id="home">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1><span>Salya</span> Construction</h1>
+        <h2>Building Dreams, Creating Landmarks</h2>
+        <p>Salya Construction has been delivering dependable building solutions across Nagapattinam for over three decades, with a focus on quality, timely execution, and long-lasting relationships with our clients.</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Get Quote</a>
+          <a class="btn btn-secondary" href="#projects">Our Projects</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-card">
+          <span class="visual-badge">On-site expertise</span>
+          <div class="visual-panel image-panel">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80" alt="Construction site image" />
+          </div>
+          <div class="visual-caption">
+            <strong>Trusted for residential, commercial & institutional projects</strong>
+            <span>From planning to execution, every detail is designed to last.</span>
+          </div>
+        </div>
+      </div>
+
+    <div class="stats-section">
+      <article class="stat-card">
+        <strong>35+</strong>
+        <span>Years of Experience</span>
+      </article>
+      <article class="stat-card">
+        <strong>8+</strong>
+        <span>Service Categories</span>
+      </article>
+      <article class="stat-card">
+        <strong>Innovation</strong>
+        <span>Modern construction techniques and cutting-edge engineering solutions</span>
+      </article>
+      <article class="stat-card">
+        <strong>Quality</strong>
+        <span>Premium materials and uncompromising craftsmanship for lasting results</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="services container" id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-grid">
+      <article class="service-card">
+        <h3>Construction Services</h3>
+        <p>End-to-end site construction support — from early-stage planning to equipment, tools, and on-site supervision.</p>
+      </article>
+      <article class="service-card">
+        <h3>Flat Promotion Services</h3>
+        <p>Land promotion for agricultural, commercial, residential, and industrial plots, including DTP and Panchayat-approved sites.</p>
+      </article>
+      <article class="service-card">
+        <h3>Educational Institution Construction</h3>
+        <p>Large-scale campus construction, including work delivered for EGSP Engineering College and E.G.S. Pillai Polytechnic College.</p>
+      </article>
+      <article class="service-card">
+        <h3>Hotel & Hospital Construction</h3>
+        <p>Commercial and healthcare facility construction, including the Venkateswara Hospital project.</p>
+      </article>
+      <article class="service-card">
+        <h3>Flats & Apartments</h3>
+        <p>Residential apartment complexes built with attention to design, durability, and livability.</p>
+      </article>
+      <article class="service-card">
+        <h3>Bungalow Construction</h3>
+        <p>Custom individual homes tailored to each family's needs and vision.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="projects container" id="projects">
+    <h2 class="section-title">Featured Projects</h2>
+    <ul class="project-list">
+      <li>EGSP Engineering College</li>
+      <li>E.G.S. Pillai Polytechnic College</li>
+      <li>Venkateswara Hospital</li>
+      <li>Hotel Construction Projects</li>
+      <li>Residential Flats & Apartments</li>
+      <li>Custom Bungalows</li>
+    </ul>
+  </section>
+
+  <section class="contact-section container" id="contact">
+    <h2 class="section-title">Reach Us</h2>
+    <div class="contact-card">
+      <p><strong>Salya Construction</strong></p>
+      <p>Nagapattinam, Tamil Nadu, India</p>
+      <p>Proprietor: N. Rajan</p>
+      <p>Phone: <a href="tel:+918047517631">+91 80475 17631</a></p>
+    </div>
+  </section>
+</main>
+
+<div class="loader-screen" id="loaderScreen">
+  <div class="loader-stage" id="loaderStage">
+    <svg class="word-svg" id="wordSvg" viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="brickGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e14545"/>
+          <stop offset="100%" stop-color="#a51f1f"/>
+        </linearGradient>
+        <clipPath id="wordClip">
+          <text x="8" y="128" font-family="Playfair Display, serif" font-weight="800" font-size="128" letter-spacing="-4">SALYA</text>
+        </clipPath>
+        <clipPath id="wordClipShine">
+          <text x="8" y="128" font-family="Playfair Display, serif" font-weight="800" font-size="128" letter-spacing="-4">SALYA</text>
+        </clipPath>
+      </defs>
+
+      <!-- swarm of bricks, clipped to the word silhouette -->
+      <g clip-path="url(#wordClip)" id="brickField"></g>
+
+      <!-- shine sweep, clipped to the same silhouette -->
+      <g clip-path="url(#wordClipShine)">
+        <rect class="shine-rect" x="0" y="0" width="180" height="190" fill="url(#shineGrad)"/>
+      </g>
+      <defs>
+        <linearGradient id="shineGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#fff" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div class="impact-ring"></div>
+    <div class="tagline">Construction</div>
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
