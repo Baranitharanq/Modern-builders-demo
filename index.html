@@ -126,6 +126,43 @@
   </section>
 </main>
 
+<div class="loader-screen" id="loaderScreen">
+  <div class="loader-stage" id="loaderStage">
+    <svg class="word-svg" id="wordSvg" viewBox="0 0 640 190" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="brickGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e14545"/>
+          <stop offset="100%" stop-color="#a51f1f"/>
+        </linearGradient>
+        <clipPath id="wordClip">
+          <text x="8" y="128" font-family="Playfair Display, serif" font-weight="800" font-size="128" letter-spacing="-4">SALYA</text>
+        </clipPath>
+        <clipPath id="wordClipShine">
+          <text x="8" y="128" font-family="Playfair Display, serif" font-weight="800" font-size="128" letter-spacing="-4">SALYA</text>
+        </clipPath>
+      </defs>
+
+      <!-- swarm of bricks, clipped to the word silhouette -->
+      <g clip-path="url(#wordClip)" id="brickField"></g>
+
+      <!-- shine sweep, clipped to the same silhouette -->
+      <g clip-path="url(#wordClipShine)">
+        <rect class="shine-rect" x="0" y="0" width="180" height="190" fill="url(#shineGrad)"/>
+      </g>
+      <defs>
+        <linearGradient id="shineGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#fff" stop-opacity="0.85"/>
+          <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div class="impact-ring"></div>
+    <div class="tagline">Construction</div>
+  </div>
+</div>
+
 <script src="script.js" defer></script>
 </body>
 </html>
