@@ -26,7 +26,130 @@ html,body{margin:0;height:100%;background:var(--paper);font-family:'Inter',sans-
   font-family:'IBM Plex Mono',monospace;
 }
 
-/* ============ demo page ============ */
+/* ============ LOADER ============ */
+.loader-screen{
+  position:fixed;
+  inset:0;
+  background:var(--paper);
+  display:grid;
+  place-items:center;
+  z-index:1500;
+  transition:opacity .6s ease;
+  overflow:hidden;
+}
+.loader-screen.hide{opacity:0; pointer-events:none;}
+
+.loader-stage{
+  position:relative;
+  width:min(90vw, 680px);
+}
+
+svg.word-svg{
+  display:block;
+  width:100%;
+  height:auto;
+  overflow:visible;
+}
+
+/* bricks */
+.flybrick{
+  fill:url(#brickGrad);
+  stroke:rgba(0,0,0,0.08);
+  stroke-width:0.5;
+  transform-box:fill-box;
+  transform-origin:center;
+  transform:
+    translate(var(--dx), var(--dy))
+    rotate(var(--rot))
+    scale(0.4);
+  opacity:0;
+  transition:
+    transform var(--dur) cubic-bezier(0.16, 1, 0.3, 1),
+    opacity calc(var(--dur) * 0.35) ease-out;
+  transition-delay:var(--delay), var(--delay);
+}
+.loader-stage.assembling .flybrick{
+  transform:translate(0,0) rotate(0deg) scale(1);
+  opacity:1;
+}
+
+/* impact flash ring at the moment the whole word lands */
+.impact-ring{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  border:2px solid rgba(178,58,46,0.55);
+  transform:translate(-50%,-50%) scale(0);
+  opacity:0;
+  pointer-events:none;
+}
+.loader-stage.impact .impact-ring{
+  animation:ringPulse 0.7s ease-out forwards;
+}
+@keyframes ringPulse{
+  0%{ transform:translate(-50%,-50%) scale(0); opacity:0.9; }
+  100%{ transform:translate(-50%,-50%) scale(22); opacity:0; }
+}
+
+/* dust puffs scattered where bricks "land" */
+.dust-puff{
+  position:absolute;
+  width:10px;
+  height:10px;
+  background:rgba(34,34,34,0.14);
+  border-radius:50%;
+  filter:blur(1px);
+  opacity:0;
+  pointer-events:none;
+}
+.loader-stage.impact .dust-puff{
+  animation:puff 0.65s ease-out forwards;
+}
+@keyframes puff{
+  0%{opacity:.85; transform:scale(.3) translateY(0);}
+  100%{opacity:0; transform:scale(2) translateY(-16px);}
+}
+
+/* metallic shine sweep across the assembled word */
+.shine-mask{
+  fill:rgba(255,255,255,0);
+}
+.shine-rect{
+  transform:translateX(-140%);
+  opacity:0;
+}
+.loader-stage.shine .shine-rect{
+  animation:shineSweep 1.1s ease forwards;
+}
+@keyframes shineSweep{
+  0%{ transform:translateX(-140%); opacity:1;}
+  100%{ transform:translateX(140%); opacity:1;}
+}
+
+.tagline{
+  position:absolute;
+  left:calc(50% + 120px);
+  top:60%;
+  transform:translateY(-50%);
+  margin:0;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  font-size:0.78rem;
+  font-weight:600;
+  color:var(--slate);
+  opacity:0;
+  transition:opacity .7s ease, transform .7s ease;
+  white-space:nowrap;
+}
+.loader-stage.reveal-tag .tagline{
+  opacity:1;
+  transform:translateY(-50%);
+}
+
+/* ============ demo page behind loader ============ */
 .site-preview{
   min-height:100vh;
   background:
@@ -303,4 +426,6 @@ html,body{margin:0;height:100%;background:var(--paper);font-family:'Inter',sans-
   .project-list li:nth-child(odd){padding-right:4px}
   .contact-card{padding:24px 18px}
   .services,.projects,.contact-section{padding:36px 0}
+  .loader-stage{width:min(84vw, 360px)}
+  .tagline{left:calc(50% + 62px);font-size:0.6rem;letter-spacing:0.2em}
 }
