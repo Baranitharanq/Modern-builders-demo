@@ -6,6 +6,7 @@
 
   const VB_W = 640, VB_H = 190;
   const BRICK_W = 15, BRICK_H = 9, GAP = 2;
+  const isMobile = window.matchMedia('(max-width: 720px)').matches;
 
   function buildBricks(){
     field.innerHTML = '';
@@ -41,9 +42,11 @@
         const dCenter = Math.hypot(x - centerX, y - centerY);
         const maxDist = Math.hypot(centerX, centerY);
         const wave = (dCenter / maxDist) * 0.35;
-        const jitter = Math.random() * 0.25;
+        const jitter = Math.random() * 0.2;
         const delay = (wave + jitter).toFixed(3);
-        const dur = (0.55 + Math.random() * 0.35).toFixed(3);
+        const dur = isMobile
+          ? (0.32 + Math.random() * 0.14).toFixed(3)
+          : (0.55 + Math.random() * 0.35).toFixed(3);
 
         rect.style.setProperty('--dx', dx.toFixed(1) + 'px');
         rect.style.setProperty('--dy', dy.toFixed(1) + 'px');
@@ -61,7 +64,7 @@
     const rectBox = svg.getBoundingClientRect();
     const stageBox = stage.getBoundingClientRect();
     const scaleX = rectBox.width / VB_W;
-    const spots = 14;
+    const spots = isMobile ? 8 : 14;
     for(let i = 0; i < spots; i++){
       const puff = document.createElement('div');
       puff.className = 'dust-puff';
@@ -90,13 +93,13 @@
     });
 
     // impact flash once the swarm has landed (~ max delay + max duration)
-    setTimeout(() => stage.classList.add('impact'), 950);
+    setTimeout(() => stage.classList.add('impact'), isMobile ? 500 : 950);
     // shine sweep right after impact
-    setTimeout(() => stage.classList.add('shine'), 1150);
+    setTimeout(() => stage.classList.add('shine'), isMobile ? 680 : 1150);
     // subtitle fades in
-    setTimeout(() => stage.classList.add('reveal-tag'), 1550);
+    setTimeout(() => stage.classList.add('reveal-tag'), isMobile ? 900 : 1550);
     // hide loader, reveal the site
-    setTimeout(() => loaderScreen.classList.add('hide'), 3000);
+    setTimeout(() => loaderScreen.classList.add('hide'), isMobile ? 1500 : 3000);
   }
 
   const replayBtn = document.getElementById('replayBtn');
